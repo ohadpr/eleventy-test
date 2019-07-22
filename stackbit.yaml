@@ -1,0 +1,166 @@
+stackbitVersion: ~0.2.0
+ssgName: custom
+uploadDir: img
+buildCommand: npm install && npm run build
+publishDir: _site
+dataDir: _data
+pagesDir: ''
+staticDir: static
+models:
+  metadata:
+    type: data
+    label: Site Metadata
+    description: Global Site Metadata
+    file: metadata.json
+    fields:
+      - name: title
+        type: string
+        label: Title
+      - name: url
+        type: string
+        label: Absolute Site URL
+      - name: author
+        type: object
+        label: Author
+        fields:
+          - name: name
+            type: string
+            label: Name
+            required: true
+          - name: email
+            type: string
+            label: Email
+          - name: github
+            type: string
+            label: GitHub URL
+  home:
+    type: page
+    label: Home
+    description: Homepage layout
+    singleInstance: true
+    file: pages/home.md
+    fields:
+      - name: title
+        type: string
+        label: Title
+        required: true
+      - name: date
+        type: date
+        label: Date
+        required: true
+      - name: navtitle
+        type: string
+        label: Navigation item title
+      - name: tags
+        type: list
+        label: Tags
+    layout: layouts/home.njk
+  page:
+    type: page
+    label: Page
+    description: Generic page layout
+    folder: pages
+    exclude: '{home.md,blog.md,contact.md,pages.json}'
+    fields:
+      - name: title
+        type: string
+        label: Title
+        required: true
+      - name: date
+        type: date
+        label: Date
+        required: true
+      - name: navtitle
+        type: string
+        label: Navigation item title
+      - name: tags
+        type: list
+        label: Tags
+    layout: layouts/page.njk
+  blog:
+    type: page
+    label: Blog
+    description: Blog layout
+    singleInstance: true
+    file: pages/blog.md
+    fields:
+      - name: title
+        type: string
+        label: Title
+        required: true
+      - name: date
+        type: date
+        label: Date
+        required: true
+      - name: navtitle
+        type: string
+        label: Navigation item title
+      - name: tags
+        type: list
+        label: Tags
+    layout: layouts/blog.njk
+  post:
+    type: page
+    label: Post
+    description: Post layout
+    folder: posts
+    exclude: '{posts.json}'
+    fields:
+      - name: title
+        type: string
+        label: Title
+        required: true
+      - name: date
+        type: date
+        label: Date
+        required: true
+      - name: summary
+        type: text
+        label: Summary
+      - name: tags
+        type: list
+        label: Tags
+    layout: layouts/post.njk
+  contact:
+    type: page
+    label: Contact
+    description: Contact page layout
+    singleInstance: true
+    file: pages/contact.md
+    fields:
+      - name: title
+        type: string
+        label: Title
+        required: true
+      - name: date
+        type: date
+        label: Date
+        required: true
+      - name: navtitle
+        type: string
+        label: Navigation item title
+      - name: tags
+        type: list
+        label: Tags
+    layout: layouts/contact.njk
+  not_found:
+    type: page
+    label: 404 Page
+    description: 404 page layout
+    singleInstance: true
+    file: 404.md
+    fields:
+      - name: title
+        type: string
+        label: Title
+        required: true
+      - name: permalink
+        type: string
+        label: Permalink
+        description: URL of the page
+        const: /404.html
+        required: true
+        hidden: true
+    layout: layouts/page.njk
+pageLayoutKey: layout
+injectLocations: null
